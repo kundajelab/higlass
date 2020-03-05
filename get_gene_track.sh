@@ -1,6 +1,6 @@
-ASSEMBLY=hg38
+ASSEMBLY=hg19
 TAXID=9606
-
+DATADIR=/srv1/scratch/data
 #wget -N -P ~/data/genbank-data/${ASSEMBLY}/ \
 #     http://hgdownload.cse.ucsc.edu/goldenPath/${ASSEMBLY}/database/refGene.txt.gz
 
@@ -124,3 +124,10 @@ python scripts/exonU.py \
        > ~/data/genbank-data/${ASSEMBLY}/geneAnnotationsExonUnions.bed
 wc -l ~/data/genbank-data/${ASSEMBLY}/geneAnnotationsExonUnions.bed
 
+clodius aggregate bedfile \
+    --max-per-tile 20 \
+    --importance-column 5 \
+    --chromsizes-filename $ASSEMBLY.chrom.sizes \
+    --output-file $DATADIR/$ASSEMBLY/gene-annotations-${ASSEMBLY}.db \
+    --delimiter $'\t' \
+    ~/data/genbank-data/${ASSEMBLY}/geneAnnotationsExonUnions.bed

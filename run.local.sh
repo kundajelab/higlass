@@ -1,12 +1,10 @@
-higlass-manage start -t /srv/ssd/higlass/tmp \
-	       -d /srv/ssd/higlass/data \
-	       --site-url 171.67.96.244 \
+higlass-manage start -t /srv1/scratch/tmp \
+	       -d /srv1/scratch/data \
+	       --site-url vayu.stanford.edu \
 	       -p 8989 \
-	       -n atlas \
-	       -m /srv/ssd/higlass/media \
-	       --no-public-data \
+	       -m /srv1/scratch/media \
 	       --workers 40 \
 	       --use-redis \
-	       --redis-dir /srv/ssd/higlass/redis
+	       --redis-dir /srv1/scratch/redis
 
 
